@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title type="html">FEED_TITLE</title>
+    <subtitle type="html">FEED_SUBTITLE</subtitle>
+    <link rel="alternate" type="text/html" href="FEED_LINK_ALTERNATE"/>
+    <id>FEED_ID</id>
+    <logo>FEED_LOGO</logo>
+    <entry>
+        <title type="html">ENTRY_TITLE_1</title>
+        <link rel="alternate" type="text/html" href="ENTRY_LINK_ALTERNATE_1"/>
+        <published>2018-06-01T12:00:00+02:00</published>
+        <updated>2018-06-01T12:30:00+02:00</updated>
+        <id>ENTRY_ID_1</id>
+        <author>
+            <name>ENTRY_AUTHOR_NAME_1</name>
+        </author>
+        <summary type="html">ENTRY_SUMMARY_1</summary>
+    </entry>
+    <entry>
+        <title type="text">ENTRY_TITLE_2</title>
+        <link rel="alternate" type="text/plain" href="ENTRY_LINK_ALTERNATE_2"/>
+        <published>2018-06-01T13:00:00+02:00</published>
+        <updated>2018-06-01T13:30:00+02:00</updated>
+        <id>ENTRY_ID_2</id>
+        <author>
+            <name>ENTRY_AUTHOR_NAME_2</name>
+            <email>ENTRYAUTHOREMAIL2@DOMAIN.DE</email>
+            <uri>ENTRY_AUTHOR_URI_2</uri>
+        </author>
+        <summary type="html">ENTRY_SUMMARY_2</summary>
+    </entry>
+</feed>

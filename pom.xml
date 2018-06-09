@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.ksc.news</groupId>
+    <artifactId>news</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>News</name>
+    <description>News Demo Application</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- Plugins -->
+        <spring-boot-plugin.version>2.0.2.RELEASE</spring-boot-plugin.version>
+
+        <!-- Dependencies -->
+        <spring-platform.version>Cairo-SR1</spring-platform.version>
+        <spring-cloud.version>Finchley.RC2</spring-cloud.version>
+    </properties>
+
+    <modules>
+        <module>feed</module>
+        <module>ui</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Spring-Boot Plugin -->
+                <!-- Creates executable and fully executable JARs -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-plugin.version}</version>
+                    <configuration>
+                        <!-- Like normal JAR layout, but uses PropertiesLauncher instead of -->
+                        <!-- JarLauncher to launch the main demoapp class. -->
+                        <!-- PropertiesLauncher can be configured using System properties, -->
+                        <!-- environment variables, ... to set, for example, additional classpath -->
+                        <!-- entries -->
+                        <!-- See: -->
+                        <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html -->
+                        <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-property-launcher-features -->
+                        <layout>ZIP</layout>
+                    </configuration>
+                    <executions>
+                        <!-- Creates META-INF/build-info.properties containing some build infos (e.g. project name and version) -->
+                        <!-- which are published by the actuator /info endpoint. -->
+                        <execution>
+                            <goals>
+                                <goal>build-info</goal>
+                            </goals>
+                        </execution>
+                        <!-- Creates an executable JAR file containing all necessary dependencies to run the demoapp. -->
+                        <execution>
+                            <id>spring-boot-repackage-app</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                            <configuration>
+                                <classifier>app</classifier>
+                                <executable>false</executable>
+                            </configuration>
+                        </execution>
+                        <!-- Same as "spring-boot-repackage-app" but additionally adds a bash -->
+                        <!-- script at the beginning of the JAR -->
+                        <!-- file to make it fully executable on Linux systems. -->
+                        <!-- The demoapp can be started by "./<demoapp>.jar" instead -->
+                        <!-- of "java -jar <demoapp>.jar". -->
+                        <execution>
+                            <id>spring-boot-repackage-bin</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                            <configuration>
+                                <classifier>bin</classifier>
+                                <executable>true</executable>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

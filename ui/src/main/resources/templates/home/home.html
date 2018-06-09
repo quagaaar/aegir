@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title data-th-text="#{app.title}">News Demo Application</title>
+    <link href="../../static/css/ui.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">News Demo Application</div>
+        <div class="search"><input type="text" title=""/></div>
+    </nav>
+</header>
+<main>
+<div data-th-fragment="page" class="page">
+    <div class="page-title"><h1 data-th-text="#{home.title}">Home sweet Home!</h1></div>
+    <div class="statistics">
+        <ul data-th-if="${statistics}">
+            <li data-th-if="${statistics.totalSources > -1}" data-th-text="#{home.number_of_sources(${statistics.totalSources})}">0 Sources</li>
+            <li data-th-if="${statistics.totalSources == -1}" data-th-text="#{home.number_of_sources_error}" class="error">Sources not available</li>
+            <li data-th-if="${statistics.totalAuthors > -1}" data-th-text="#{home.number_of_authors(${statistics.totalAuthors})}">0 Authors</li>
+            <li data-th-if="${statistics.totalAuthors == -1}" data-th-text="#{home.number_of_authors_error}" class="error">Authors not available</li>
+            <li data-th-if="${statistics.totalEntries > -1}" data-th-text="#{home.number_of_entries(${statistics.totalEntries})}">0 Entries</li>
+            <li data-th-if="${statistics.totalEntries == -1}" data-th-text="#{home.number_of_entries_error}" class="error">Entries not available</li>
+        </ul>
+    </div>
+    <div class="load">
+        <form method="post" action="#" data-th-action="@{/feed/load}" data-th-object="${form}">
+            <label for="url" data-th-text="#{home.feed_url}">Feed URL</label>
+            <input type="url" id="url" data-th-field="*{url}" data-th-placeholder="#{home.feed_url_example}" placeholder="e.g. https://feed.com/atom.xml"/>
+            <span data-th-if="${#fields.hasErrors('url')}" data-th-errors="*{url}" class="error"></span>
+            <button type="submit" data-th-text="#{home.submit}">Submit</button>
+        </form>
+    </div>
+</div>
+</main>
+<footer><div>Footer</div></footer>
+</body>
+</html>

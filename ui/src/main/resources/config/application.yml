@@ -1,0 +1,18 @@
+spring:
+    main:
+        banner-mode: "off"
+    application:
+        name: news-demo-app
+
+server:
+    port: 55578
+    compression:
+        enabled: true
+
+feign:
+    hystrix:
+        enabled: false
+
+feeds:
+    ribbon:
+        listOfServers: localhost:55571

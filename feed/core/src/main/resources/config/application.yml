@@ -1,0 +1,16 @@
+spring:
+    main:
+        banner-mode: "off"
+    application:
+        name: news-demo-feed-service
+    jpa:
+        show-sql: true
+
+server:
+    port: 55571
+    compression:
+        enabled: true
+
+logging:
+    level:
+        de.ksc: DEBUG

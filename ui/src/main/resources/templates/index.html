@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title data-th-text="#{app.title}">News Demo Application</title>
+    <link href="../static/css/ui.css" data-th-href="@{/css/ui.css}" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">News Demo Application</div>
+        <div class="search"><input type="text" placeholder="" title=""/></div>
+    </nav>
+</header>
+<main>
+    <div data-th-replace="${page} :: page">
+        Page Content
+    </div>
+</main>
+<footer><div>Footer</div></footer>
+</body>
+</html>
