@@ -1,8 +1,5 @@
 package de.ksc.news.feed.core.domain.entity;
 
-import de.ksc.news.feed.dto.FeedAuthor;
-import de.ksc.news.feed.dto.FeedSource;
-
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 

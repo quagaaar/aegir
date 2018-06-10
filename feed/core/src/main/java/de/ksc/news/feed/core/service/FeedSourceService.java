@@ -4,8 +4,6 @@ import de.ksc.news.feed.core.domain.entity.Source;
 import de.ksc.news.feed.core.domain.repository.SourceRepository;
 import de.ksc.news.feed.dto.FeedItemsPage;
 import de.ksc.news.feed.dto.FeedSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
